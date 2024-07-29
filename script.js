@@ -1,4 +1,15 @@
-function init() {
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        playRound();
+    }
+
+    if (humanWinsCounter > computerWinsCounter) {
+        console.log('Player won the game!');
+    } else if ( humanWinsCounter < computerWinsCounter){
+        console.log('Computer won the game!');
+    } else {
+        console.log('Game ends with a tie!');
+    }
 }
 
 let computerChoice = '';
@@ -35,7 +46,7 @@ function humanWins() {
 }
 
 function computerWins() {
-    computerWins++;
+    computerWinsCounter++;
 }
 
 function getComputerChoice() {
@@ -59,7 +70,7 @@ function getComputerChoice() {
 
 
 function getHumanChoice() {
-    //let input = prompt(`Choice between "rock", "paper" or "scissors". If you didn\'t choose any of the options or left the field black, "rock" is chosen by default`).toLocaleLowerCase();
+    let input = prompt(`Choice between "rock", "paper" or "scissors". If you didn\'t choose any of the options or left the field black, "rock" is chosen by default`).toLocaleLowerCase();
 
     switch (input) {
         case "rock":
