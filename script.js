@@ -19,10 +19,12 @@ function playRound() {
             || (humanChoice === 'rock' && computerChoice === 'scissors')
             || (humanChoice === 'scissors' && computerChoice === 'paper')) {
             humanWins();
+            console.log('Player wins!');
         } else if ((computerChoice === 'paper' && humanChoice === 'rock')
             || (computerChoice === 'rock' && humanChoice === 'scissors')
             || (computerChoice === 'scissors' && humanChoice === 'paper')) {
             computerWins();
+            console.log('Computer wins!');
         }
         
     }
