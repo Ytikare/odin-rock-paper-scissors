@@ -1,13 +1,14 @@
 function init() {
     getComputerChoice();
+    getHumanChoice();
 }
 
-let computerChoice = 'a';
+let computerChoice = '';
+let humanChoice = '';
 
 function getComputerChoice() {
     let random = (Math.random() * 10).toFixed(0);
 
-    console.log(random)
     let result = random % 3;
 
     switch (result) {
@@ -21,5 +22,22 @@ function getComputerChoice() {
             computerChoice = 'scissors';
             break;
     }
-    
+
+}
+
+
+function getHumanChoice() {
+    let input = prompt(`Choice between "rock", "paper" or "scissors". If you didn\'t choose any of the options or left the field black, "rock" is chosen by default`).toLocaleLowerCase();
+
+    switch (input) {
+        case "rock":
+        case "paper":
+        case "scissors":
+            humanChoice = input;
+            break;
+
+        default:
+            humanChoice = 'rock';
+            break;
+    }
 }
