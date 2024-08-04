@@ -1,52 +1,29 @@
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        playRound();
-    }
+const playerChoicesList = document.querySelector('.player-choices');
 
-    if (humanWinsCounter > computerWinsCounter) {
-        console.log('Player won the game!');
-    } else if ( humanWinsCounter < computerWinsCounter){
-        console.log('Computer won the game!');
-    } else {
-        console.log('Game ends with a tie!');
-    }
-}
-
-let computerChoice = '';
-let humanChoice = '';
-
-let computerWinsCounter = 0;
-let humanWinsCounter = 0;
-
-function playRound() {
-    getComputerChoice();
-    getHumanChoice();
-
-    if (computerChoice === humanChoice) {
+function playRound(playerChoice, computerChoice) {
+    if (computerChoice === playerChoice) {
         console.log('Tie');
     } else {
 
-        if ((humanChoice === 'paper' && computerChoice === 'rock')
-            || (humanChoice === 'rock' && computerChoice === 'scissors')
-            || (humanChoice === 'scissors' && computerChoice === 'paper')) {
-            humanWins();
-            console.log('Player wins!');
-        } else if ((computerChoice === 'paper' && humanChoice === 'rock')
-            || (computerChoice === 'rock' && humanChoice === 'scissors')
-            || (computerChoice === 'scissors' && humanChoice === 'paper')) {
+        if ((playerChoice === 'paper' && computerChoice === 'rock')
+            || (playerChoice === 'rock' && computerChoice === 'scissors')
+            || (playerChoice === 'scissors' && computerChoice === 'paper')) {
+            playerWins();
+        } else if ((computerChoice === 'paper' && playerChoice === 'rock')
+            || (computerChoice === 'rock' && playerChoice === 'scissors')
+            || (computerChoice === 'scissors' && playerChoice === 'paper')) {
             computerWins();
-            console.log('Computer wins!');
         }
-        
+
     }
 }
 
-function humanWins() {
-    humanWinsCounter++;
+function playerWins() {
+    console.log('Player wins!')
 }
 
 function computerWins() {
-    computerWinsCounter++;
+    console.log('Computer wins!')
 }
 
 function getComputerChoice() {
@@ -56,31 +33,21 @@ function getComputerChoice() {
 
     switch (result) {
         case 0:
-            computerChoice = 'rock';
-            break;
+            return 'rock';
         case 1:
-            computerChoice = 'paper';
-            break;
-        case 2:
-            computerChoice = 'scissors';
-            break;
-    }
-
-}
-
-
-function getHumanChoice() {
-    let input = prompt(`Choice between "rock", "paper" or "scissors". If you didn\'t choose any of the options or left the field black, "rock" is chosen by default`).toLocaleLowerCase();
-
-    switch (input) {
-        case "rock":
-        case "paper":
-        case "scissors":
-            humanChoice = input;
-            break;
-
+            return 'paper';
         default:
-            humanChoice = 'rock';
-            break;
+            return 'scissors';
     }
+
 }
+
+playerChoicesList.addEventListener('click', e => {
+    let target = e.target;
+
+    let playerChoice = target.id;
+
+    let computerChoice = getComputerChoice();
+    
+    playRound(playerChoice, computerChoice)
+})
