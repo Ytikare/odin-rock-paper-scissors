@@ -49,7 +49,7 @@ function playRound(playerChoice, computerChoice) {
     }
 
     scoreboardPara.textContent = `${playerWinsCount}:${computerWinsCount}`
-    announcerMessagePara.textContent = message;
+    announcerMessagePara.textContent = roundResult;
 }
 
 
