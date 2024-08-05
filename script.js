@@ -3,6 +3,7 @@ const resultsDiv = document.querySelector('.result');
 const resetGameButton = document.querySelector('.reset-game');
 const scoreboardPara = document.querySelector('.scoreboard');
 const announcerMessagePara = document.querySelector('.announcer');
+const playerButtons = document.querySelectorAll('.player-choices button');
 
 const playerChoiceSpan = document.querySelector('.player > .choice');
 const computerChoiceSpan = document.querySelector('.computer > .choice');
@@ -40,8 +41,10 @@ function playRound(playerChoice, computerChoice) {
 
         if (playerWinsCount == 5) {
             roundResult = `Player won the game!`;
+            endGame();
         } else if (computerWinsCount == 5) {
             roundResult = 'Computer won the game!';
+            endGame();
         }
     }
 
@@ -50,6 +53,11 @@ function playRound(playerChoice, computerChoice) {
 }
 
 
+function endGame(){
+    for (const button of playerButtons) {
+        button.disabled = true;
+    }
+}
 
 
 function getComputerChoice() {
