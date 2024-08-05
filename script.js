@@ -90,3 +90,15 @@ playerChoicesList.addEventListener('click', e => {
         playRound(playerChoice, computerChoice)
     }
 })
+
+resetGameButton.addEventListener('click', e => {
+    playerWinsCount = 0;
+    computerWinsCount = 0;
+
+    resultsDiv.style.display = 'none';
+    e.target.style.display = 'none';
+
+    for (const button of playerButtons) {
+        button.disabled = false;
+    }
+})
