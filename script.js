@@ -45,9 +45,11 @@ function getComputerChoice() {
 playerChoicesList.addEventListener('click', e => {
     let target = e.target;
 
-    let playerChoice = target.id;
+    if (target.localName == 'button') {
+        let playerChoice = target.id;
 
-    let computerChoice = getComputerChoice();
-    
-    playRound(playerChoice, computerChoice)
+        let computerChoice = getComputerChoice();
+
+        playRound(playerChoice, computerChoice)
+    }
 })
